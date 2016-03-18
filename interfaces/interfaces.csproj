@@ -41,7 +41,7 @@
     <Compile Include="IGetSignature`1.cs" />
     <Compile Include="IHasSignature`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StackingEventArgs.cs" />
+    <Compile Include="StackingEvent.cs" />
     <Compile Include="StacklessEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

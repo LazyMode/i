@@ -22,6 +22,7 @@ public abstract class StacklessEventArgs<T> : EventArgs
     }
 
     private ExContext _Context;
+    private bool _FIFO;
 
     public bool Done()
     {
@@ -53,9 +54,24 @@ public abstract class StacklessEventArgs<T> : EventArgs
         var handler = xContext.Handler;
         var sender = xContext.Sender;
 
-        var current = (EventHandler<T>)handler.GetInvocationList().Last();
+        EventHandler<T> current, remains;
+        var list = handler.GetInvocationList();
+        if (!_FIFO)
+        {
+            current = (EventHandler<T>)list.Last();
+            remains = handler - current;
+        }
+        else
+        {
+            current = (EventHandler<T>)list[0];
+            if (current == handler)
+                remains = null;
+            else
+            {
+                remains = list.Skip(1).Cast<EventHandler<T>>().Aggregate((a, b) => a + b);
+            }
+        }
 
-        var remains = handler - current;
         var @new = (remains == null) ? null : new ExContext(context, remains, sender);
 
 #if UseInterlocked
@@ -70,11 +86,13 @@ public abstract class StacklessEventArgs<T> : EventArgs
         Next();
     }
 
-    public void Invoke(EventHandler<T> handler, object sender)
+    public void Invoke(EventHandler<T> handler, object sender, bool fifo = false)
     {
         var @new = new ExContext(Context.Current, handler, sender);
         if (Interlocked.CompareExchange(ref _Context, @new, null) != null)
             throw new InvalidOperationException();
+
+        _FIFO = fifo;
 
         Next();
     }
