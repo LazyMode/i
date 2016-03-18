@@ -1,4 +1,4 @@
-if($args.Count -lt 1){
+ï»¿if($args.Count -lt 1){
     throw "Need at least one argument!"
 }
 
@@ -49,7 +49,7 @@ $exts = ".DLL", ".EXE"
     $vi = [System.Diagnostics.FileVersionInfo]$file.VersionInfo
     $curr = $vi.FileMajorPart, $vi.FileMinorPart, $vi.FileBuildPart, $vi.FilePrivatePart
 
-    "- " + $src + " :: " + $curr + " ¡ú " + $vi.ProductVersion
+    "- " + $src + " :: " + $curr + " â†’ " + $vi.ProductVersion
 
     for($i = 0; $i -lt 4; $i++){
         if($curr[$i] -gt $last[$i]) { break }
@@ -61,7 +61,7 @@ $exts = ".DLL", ".EXE"
 }
 
 $iver = $ver.ProductVersion
-"Final Version: " + $nuspec + " ¡ú " + $iver
+"Final Version: " + $nuspec + " â†’ " + $iver
 
 $xs = New-Object System.Xml.XmlWriterSettings
 $xs.Indent = $true
