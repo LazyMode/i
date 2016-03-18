@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>i</id>
+    <version>0.0-aardvark</version>
+    <authors>Licshee</authors>
+    <projectUrl>https://github.com/OmniKits/i</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>-</description>
+  </metadata>
+  <files>
+    <file src="Release\i.dll" target="lib\i.dll" />
+  </files>
+</package>
