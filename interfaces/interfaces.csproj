@@ -37,9 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICanHasSignature.cs" />
-    <Compile Include="IGetSignature`1.cs" />
-    <Compile Include="IHasSignature`1.cs" />
+    <Compile Include="ICanHasKey`1.cs" />
+    <Compile Include="IGetKey`1.cs" />
+    <Compile Include="IHasKey`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StackingEventArgs.cs" />
     <Compile Include="StacklessEventArgs.cs" />
